@@ -5,14 +5,15 @@ export const client = createClient({
     apikey: process.env.API_KEY,
 })
 
-export async function getPostBySlug(slug){
+export async function getAllSlugs(limit=100){
     try{
-        const post = await client.get({
+        const posts = await client.get({
             endpoint:'blogs',
-            queries:{filters: 'slug[equals]${slug}'}
+            queries:{filters: 'title,slug',orders:'-publishDate',limit:limit},
         })
+        return posts.contents
     } catch(err){
         console.log('--getPostBySlug--')
             console.log(err)
     }
-}
+}ß
