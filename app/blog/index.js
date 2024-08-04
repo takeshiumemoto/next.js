@@ -16,7 +16,7 @@ export default function Blog({ posts }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps() {s
     const posts = await getAllPosts();
 
     return {
